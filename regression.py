@@ -12,7 +12,7 @@ def create_dataset(hm, variance, step=2, correlation=False):
     val = 1
     ys = []
     for i in range(hm):
-        y =  val + random.randrange(-variance, variance)
+        y = val + random.randrange(-variance, variance)
         ys.append(y)
         if correlation and correlation =='pos':
             val+=step
@@ -40,13 +40,12 @@ def coefficient_of_determination(ys_orig, ys_line):
 
 
 
-xs, ys = create_dataset(40, 10, 1, correlation='pos')    
-m,b = best_fit_slope_and_intercept(xs,ys)
+xs, ys           = create_dataset(40, 10, 1, correlation='pos')    
+m,b              = best_fit_slope_and_intercept(xs,ys)
 regiression_line = [m*x+b for x in xs]
 
 predict_x = 8
-predict_y = m*predict_x +b
-
+predict_y = m*predict_x + b
 r_squared =  coefficient_of_determination(ys, regiression_line)
 
 print(r_squared)
